@@ -176,6 +176,7 @@
   --portfolio-line: rgba(21, 32, 25, 0.14);
   background: var(--portfolio-bg);
   color: var(--portfolio-ink);
+  overflow-anchor: none;
   transition: background-color 300ms ease, color 300ms ease;
 }
 
@@ -241,6 +242,28 @@
 
 .portfolio-page:not(.portfolio-dark) #projects .text-white {
   color: var(--portfolio-ink);
+}
+
+.resume-printer-skin {
+  background: linear-gradient(180deg, #3b4a3f 0%, #1f2b23 42%, #152019 100%);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.18),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.42);
+}
+
+.resume-paper {
+  box-shadow:
+    inset 0 2px rgba(255, 255, 255, 0.88),
+    0 14px 28px rgba(17, 17, 17, 0.14);
+}
+
+.resume-paper::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 14px;
+  background: linear-gradient(rgba(0, 0, 0, 0.08), transparent);
+  pointer-events: none;
 }
 
 .portfolio-page:not(.portfolio-dark) #projects .project-type {
