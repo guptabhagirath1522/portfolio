@@ -220,6 +220,7 @@
 
 .portfolio-page.portfolio-dark #projects {
   background: #18251c;
+  color: var(--portfolio-ink);
 }
 
 .portfolio-page:not(.portfolio-dark) #projects {

@@ -75,7 +75,7 @@ export function Projects() {
             <h2 className="max-w-xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-7xl">
               A few things
               <br />
-              <span className="text-[#d7f45e]">I&apos;ve shipped.</span>
+              <span className="text-muted-foreground">I&apos;ve shipped.</span>
             </h2>
           </div>
           <p className="max-w-xs leading-relaxed text-white/55">
