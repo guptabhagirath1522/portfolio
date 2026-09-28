@@ -257,6 +257,31 @@
     0 14px 28px rgba(17, 17, 17, 0.14);
 }
 
+.resume-slot-mouth {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18) 0,
+    rgba(24, 24, 25, 0.96) 28%,
+    rgba(9, 9, 10, 0.98) 62%,
+    rgba(10, 10, 11, 0.56) 78%,
+    transparent 100%
+  );
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.88);
+}
+
+.resume-paper-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.32), transparent 24%, rgba(0, 0, 0, 0.035) 58%, transparent),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.02) 0, rgba(0, 0, 0, 0.02) 1px, transparent 1px, transparent 4px);
+  mix-blend-mode: multiply;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
 .resume-paper::after {
   content: '';
   position: absolute;
