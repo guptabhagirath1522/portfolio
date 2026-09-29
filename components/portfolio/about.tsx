@@ -15,9 +15,9 @@ export function About() {
             Curious by default. <span className="text-muted-foreground">Precise by choice.</span>
           </h2>
           <p className="mt-8 max-w-sm leading-relaxed text-muted-foreground">
-            Full-stack and mobile developer with experience across web and cross-platform apps,
-            working across freelance and full-time roles. I care about the details that make
-            products feel inevitable.
+            Full-stack, mobile, and AI engineer with experience across web, cross-platform apps,
+            and intelligent systems powered by LLMs, RAG, and vector databases. I care about the
+            details that make products feel inevitable.
           </p>
         </div>
         <div className="grid gap-8 sm:grid-cols-2">

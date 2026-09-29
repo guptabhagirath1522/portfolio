@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Bhagirath Gupta — Full-Stack & Mobile Developer',
-  description: 'Portfolio of Bhagirath Gupta, a full-stack and mobile developer building cross-platform apps and high-performance web products.',
+  title: 'Bhagirath Gupta — Full-Stack, Mobile & AI Engineer',
+  description: 'Portfolio of Bhagirath Gupta, a full-stack, mobile, and AI engineer building cross-platform apps, intelligent systems, and high-performance web products.',
   generator: 'Next.js',
 }
 

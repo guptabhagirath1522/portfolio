@@ -27,8 +27,8 @@ export function Hero() {
         </h1>
         <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <p className="max-w-md text-lg leading-relaxed text-muted-foreground">
-            I&apos;m Bhagirath Gupta, a full-stack and mobile developer building cross-platform apps
-            and high-performance web products.
+            I&apos;m Bhagirath Gupta, a full-stack, mobile, and AI engineer building cross-platform
+            apps, intelligent systems, and high-performance web products.
           </p>
           <div className="flex flex-wrap gap-3">
             <a

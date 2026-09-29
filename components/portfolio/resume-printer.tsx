@@ -6,13 +6,12 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Download, FileText, X } from 'lucide-react'
 
-const resumeUrl = '/Bhagirath_Gupta_Resume.pdf'
+// const resumeUrl = '/Bhagirath_Gupta_Resume.pdf'
+const resumeUrl = '/Bhagirath_Gupta_cv.pdf'
 const printerWidth = 360
 const buttonHeight = 50
 const actionsHeight = 50
-const feedDuration = 3.6
 const humStep = 0.09
-const humRepeats = Math.round(feedDuration / humStep) - 1
 const feedSteps = [
   { fraction: 0.4, duration: 0.68, pause: 0.22 },
   { fraction: 0.5, duration: 0.68, pause: 0.22 },
@@ -292,7 +291,8 @@ export function ResumePrinter({ onOpenChange }: ResumePrinterProps) {
           >
             <span aria-hidden="true" className="resume-paper-grain" />
             <Image
-              src="/resume-preview.png"
+              // src="/resume-preview.png"
+              src="/cv-preview.png"
               alt="Preview of Bhagirath Gupta's resume"
               width={1024}
               height={1325}
@@ -310,7 +310,7 @@ export function ResumePrinter({ onOpenChange }: ResumePrinterProps) {
         >
           <a
             href={resumeUrl}
-            download="Bhagirath_Gupta_Resume.pdf"
+            download="Bhagirath_Gupta_cv.pdf"
             tabIndex={open ? 0 : -1}
             className="inline-flex h-[50px] items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-[22px] text-sm font-semibold text-[#152019] shadow-[0_6px_16px_rgba(17,17,17,0.08)] transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_10px_22px_rgba(17,17,17,0.16)]"
           >
