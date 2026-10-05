@@ -9,10 +9,10 @@ import { SectionLabel } from './section-label'
 const WEB3FORMS_ACCESS_KEY = '3c912de5-4434-48a3-9c09-9f683c30d41b'
 
 const inputClassName =
-  'w-full border-b border-black/20 bg-transparent px-0 py-4 outline-none placeholder:text-muted-foreground focus:border-[#8cae18] transition-colors'
+  'w-full rounded-2xl border border-black/10 bg-[#f7f8f4] px-4 py-3.5 text-base outline-none placeholder:text-muted-foreground transition-colors focus:border-[#8cae18] lg:rounded-none lg:border-x-0 lg:border-t-0 lg:border-b lg:border-black/20 lg:bg-transparent lg:px-0 lg:py-4'
 
 const inputErrorClassName =
-  'w-full border-b border-red-400 bg-transparent px-0 py-4 outline-none placeholder:text-muted-foreground focus:border-red-500 transition-colors'
+  'w-full rounded-2xl border border-red-400 bg-red-50/50 px-4 py-3.5 text-base outline-none placeholder:text-muted-foreground transition-colors focus:border-red-500 lg:rounded-none lg:border-x-0 lg:border-t-0 lg:border-b lg:bg-transparent lg:px-0 lg:py-4'
 
 const socialClassName =
   'rounded-full border border-black/15 p-3 transition-colors hover:bg-[#152019] hover:text-white'
@@ -115,9 +115,9 @@ export function Contact() {
     <section
       id="contact"
       data-reveal
-      className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
+      className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24 lg:px-12 lg:py-32"
     >
-      <div className="grid gap-14 lg:grid-cols-[1fr_0.9fr]">
+      <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-14">
         <div>
           <SectionLabel>Get in touch</SectionLabel>
           <h2 className="max-w-xl text-5xl font-semibold leading-[0.95] tracking-[-0.06em] sm:text-7xl">
@@ -151,7 +151,11 @@ export function Contact() {
             ))}
           </div>
         </div>
-        <form className="space-y-5" onSubmit={handleSubmit} noValidate>
+        <form
+          className="space-y-4 rounded-[1.75rem] border border-black/10 bg-[var(--portfolio-surface)] p-5 shadow-[0_18px_40px_rgba(21,32,25,0.06)] lg:space-y-5 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none"
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <div>
             <input
               name="name"
@@ -230,7 +234,7 @@ export function Contact() {
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="inline-flex items-center gap-2 rounded-full bg-[#152019] px-6 py-3.5 text-sm font-semibold text-white transition-opacity disabled:opacity-60"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#152019] px-6 py-3.5 text-sm font-semibold text-white transition-opacity disabled:opacity-60 lg:w-auto"
           >
             {status === 'submitting' && (
               <>

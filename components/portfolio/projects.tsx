@@ -2,7 +2,7 @@
 
 import { type TouchEvent, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
 import { projects } from '@/lib/portfolio-data'
 import { ProjectCard } from './project-card'
 import { SectionLabel } from './section-label'
@@ -102,7 +102,23 @@ export function Projects() {
             <button
               disabled={projectIndex === 0}
               onClick={() => goToProject(projectIndex - 1)}
-              className="rounded-full border border-white/15 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-30"
+              className="grid h-11 w-11 place-items-center rounded-full border border-white/15 disabled:cursor-not-allowed disabled:opacity-30 lg:hidden"
+              aria-label="Previous projects"
+            >
+              <ArrowLeft size={16} />
+            </button>
+            <button
+              disabled={projectIndex >= maxProjectIndex}
+              onClick={() => goToProject(projectIndex + 1)}
+              className="grid h-11 w-11 place-items-center rounded-full border border-white/15 disabled:cursor-not-allowed disabled:opacity-30 lg:hidden"
+              aria-label="Next projects"
+            >
+              <ArrowRight size={16} />
+            </button>
+            <button
+              disabled={projectIndex === 0}
+              onClick={() => goToProject(projectIndex - 1)}
+              className="hidden rounded-full border border-white/15 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-30 lg:inline-flex"
               aria-label="Previous projects"
             >
               Previous
@@ -110,7 +126,7 @@ export function Projects() {
             <button
               disabled={projectIndex >= maxProjectIndex}
               onClick={() => goToProject(projectIndex + 1)}
-              className="rounded-full border border-white/15 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-30"
+              className="hidden rounded-full border border-white/15 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-30 lg:inline-flex"
               aria-label="Next projects"
             >
               Next <ArrowUpRight size={14} className="ml-1 inline" />
