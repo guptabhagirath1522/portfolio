@@ -9,10 +9,10 @@ import { SectionLabel } from './section-label'
 const WEB3FORMS_ACCESS_KEY = '3c912de5-4434-48a3-9c09-9f683c30d41b'
 
 const inputClassName =
-  'w-full rounded-2xl border border-black/10 bg-[#f7f8f4] px-4 py-3.5 text-base outline-none placeholder:text-muted-foreground transition-colors focus:border-[#8cae18] lg:rounded-none lg:border-x-0 lg:border-t-0 lg:border-b lg:border-black/20 lg:bg-transparent lg:px-0 lg:py-4'
+  'w-full border-b border-black/20 bg-transparent px-0 py-4 outline-none placeholder:text-muted-foreground transition-colors focus:border-[#8cae18] max-lg:rounded-2xl max-lg:border max-lg:border-black/10 max-lg:bg-[var(--portfolio-bg)] max-lg:px-4 max-lg:py-3.5 max-lg:text-base'
 
 const inputErrorClassName =
-  'w-full rounded-2xl border border-red-400 bg-red-50/50 px-4 py-3.5 text-base outline-none placeholder:text-muted-foreground transition-colors focus:border-red-500 lg:rounded-none lg:border-x-0 lg:border-t-0 lg:border-b lg:bg-transparent lg:px-0 lg:py-4'
+  'w-full border-b border-red-400 bg-transparent px-0 py-4 outline-none placeholder:text-muted-foreground transition-colors focus:border-red-500 max-lg:rounded-2xl max-lg:border max-lg:bg-red-50/50 max-lg:px-4 max-lg:py-3.5 max-lg:text-base'
 
 const socialClassName =
   'rounded-full border border-black/15 p-3 transition-colors hover:bg-[#152019] hover:text-white'
@@ -136,7 +136,7 @@ export function Contact() {
               <Phone size={17} /> +91 9452658365
             </a>
           </div>
-          <div className="mt-8 flex gap-3">
+          <div className="mt-8 hidden gap-3 lg:flex">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
