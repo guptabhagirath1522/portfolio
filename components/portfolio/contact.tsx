@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { Mail, Phone, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
-import { GitHubIcon, LinkedInIcon } from './brand-icons'
+import { SocialBrandIcon } from './brand-icons'
+import { socialLinks } from '@/lib/portfolio-data'
 import { SectionLabel } from './section-label'
 
 const WEB3FORMS_ACCESS_KEY = '3c912de5-4434-48a3-9c09-9f683c30d41b'
@@ -136,24 +137,18 @@ export function Contact() {
             </a>
           </div>
           <div className="mt-8 flex gap-3">
-            <a
-              aria-label="GitHub"
-              href="https://github.com/guptabhagirath1522"
-              target="_blank"
-              rel="noreferrer"
-              className={socialClassName}
-            >
-              <GitHubIcon size={18} />
-            </a>
-            <a
-              aria-label="LinkedIn"
-              href="https://linkedin.com/in/bhagirath-gupta"
-              target="_blank"
-              rel="noreferrer"
-              className={socialClassName}
-            >
-              <LinkedInIcon size={18} />
-            </a>
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                aria-label={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className={socialClassName}
+              >
+                <SocialBrandIcon label={social.label} />
+              </a>
+            ))}
           </div>
         </div>
         <form className="space-y-5" onSubmit={handleSubmit} noValidate>

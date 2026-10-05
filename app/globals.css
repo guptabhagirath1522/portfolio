@@ -294,3 +294,59 @@
 .portfolio-page:not(.portfolio-dark) #projects .project-type {
   color: #4f6600;
 }
+
+.menu-overlay {
+  --menu-bg: linear-gradient(160deg, #f7f8f4 0%, #eef3e4 48%, #e4edd4 100%);
+  --menu-ink: #152019;
+  --menu-muted: rgba(21, 32, 25, 0.55);
+  --menu-faint: rgba(21, 32, 25, 0.32);
+  --menu-line: rgba(21, 32, 25, 0.16);
+  --menu-glow: rgba(140, 174, 24, 0.28);
+}
+
+.portfolio-page.portfolio-dark .menu-overlay {
+  --menu-bg: linear-gradient(160deg, #0c120e 0%, #152019 42%, #1c2918 100%);
+  --menu-ink: #f4f7ef;
+  --menu-muted: rgba(244, 247, 239, 0.55);
+  --menu-faint: rgba(244, 247, 239, 0.32);
+  --menu-line: rgba(244, 247, 239, 0.18);
+  --menu-glow: rgba(215, 244, 94, 0.22);
+}
+
+.menu-curtain {
+  background: var(--menu-bg);
+}
+
+.menu-ink {
+  color: var(--menu-ink);
+}
+
+.menu-muted {
+  color: var(--menu-muted);
+}
+
+.menu-faint {
+  color: var(--menu-faint);
+}
+
+.menu-close {
+  border-color: var(--menu-line);
+  color: var(--menu-muted);
+}
+
+.menu-close:hover {
+  border-color: var(--menu-ink);
+  color: var(--menu-ink);
+}
+
+.menu-link:hover .menu-faint {
+  color: var(--menu-muted);
+}
+
+.menu-social:hover {
+  color: var(--menu-ink);
+}
+
+.menu-glow {
+  background: radial-gradient(circle, var(--menu-glow) 0%, transparent 70%);
+}

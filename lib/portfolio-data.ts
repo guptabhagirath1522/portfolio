@@ -1,5 +1,12 @@
 export const navItems = ['About', 'Experience', 'Projects', 'Contact']
 
+export const socialLinks = [
+  { label: 'GitHub', href: 'https://github.com/guptabhagirath1522' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/bhagirath-gupta' },
+  { label: 'X', href: 'https://x.com/BhagirathGupt' },
+  { label: 'Reddit', href: 'https://www.reddit.com/user/persona_2911/' },
+] as const
+
 export const skills = {
   'Languages & Backend': [
     'Python',
@@ -94,6 +101,11 @@ export const projects = [
     metrics: ['500+ active users', '45% faster assignment'],
     tags: ['Flutter', 'Python', 'LangChain', 'LangGraph'],
     accent: 'bg-[#b9d8ff]',
+    href: 'https://play.google.com/store/apps/details?id=com.alongx.civiq&hl=en_IN',
+    image: '/projects/civiq-cover-2.webp',
+    logo: '/projects/civiq.png',
+    imageTreatment: 'banner',
+    logoPlate: 'icon',
   },
   {
     number: '02',
@@ -104,6 +116,11 @@ export const projects = [
     metrics: ['40%+ faster load time', '90+ Lighthouse score'],
     tags: ['Next.js', 'Tailwind CSS', 'GSAP'],
     accent: 'bg-[#d7f45e]',
+    href: 'https://boldagyl.com/',
+    image: '/projects/boldagyl-cover.png',
+    logo: '/projects/boldagyl.png',
+    imageTreatment: 'banner',
+    logoPlate: 'dark',
   },
   {
     number: '03',
@@ -114,6 +131,11 @@ export const projects = [
     metrics: ['5 permission levels', 'UPnP + SOAP control'],
     tags: ['Flutter', 'UPnP', 'Firebase'],
     accent: 'bg-[#f3c4d9]',
+    href: 'https://oaisis.de/',
+    image: '/projects/oaisis-cover.jpg',
+    logo: '/projects/sandzz.png',
+    imageTreatment: 'banner',
+    logoPlate: 'mark',
   },
   {
     number: '04',
@@ -124,6 +146,11 @@ export const projects = [
     metrics: ['Multi-community access', 'OTP + QR visitor passes'],
     tags: ['Flutter', 'Firebase', 'Razorpay'],
     accent: 'bg-[#f6d78a]',
+    href: 'https://play.google.com/store/apps/details?id=com.alongx.civiq&hl=en_IN',
+    image: '/projects/civiq-cover.webp',
+    logo: '/projects/civiq.png',
+    imageTreatment: 'banner',
+    logoPlate: 'icon',
   },
   {
     number: '05',
@@ -134,6 +161,11 @@ export const projects = [
     metrics: ['Role-based access', 'Member + Gatekeeper sync'],
     tags: ['Flutter Web', 'Firebase', 'RBAC'],
     accent: 'bg-[#c7b9ff]',
+    href: 'https://play.google.com/store/apps/details?id=com.alongx.civiq_admin',
+    image: '/projects/civiq-admin-cover.webp',
+    logo: '/projects/civiq-admin.png',
+    imageTreatment: 'banner',
+    logoPlate: 'icon',
   },
   {
     number: '06',
@@ -144,6 +176,11 @@ export const projects = [
     metrics: ['100+ companies served', '300+ gifting brands'],
     tags: ['Next.js', 'Gatsby', 'B2B'],
     accent: 'bg-[#a9e4d0]',
+    href: 'https://www.dealberg.com/',
+    image: '/projects/dealberg-cover.jpg',
+    logo: '/projects/dealberg-icon.png',
+    imageTreatment: 'banner',
+    logoPlate: 'mark',
   },
   {
     number: '07',
@@ -154,6 +191,11 @@ export const projects = [
     metrics: ['One-stop catalog', 'Ordering + payments'],
     tags: ['Flutter', 'BLoC', 'Payments'],
     accent: 'bg-[#f0b7a4]',
+    href: 'https://play.google.com/store/apps/details?id=com.dealberg.customer&hl=en_IN',
+    image: '/projects/dealberg-app-cover.webp',
+    logo: '/projects/dealberg-app.png',
+    imageTreatment: 'banner',
+    logoPlate: 'mark',
   },
   {
     number: '08',
@@ -164,6 +206,11 @@ export const projects = [
     metrics: ['7 platform targets', 'AI-powered career analysis'],
     tags: ['Flutter', 'Firebase', 'ChatGPT + Gemini'],
     accent: 'bg-[#b9e0f4]',
+    href: 'https://www.behance.net/gallery/202915485/Design-Degree-Project',
+    image: '/projects/cariance_cover.png',
+    logo: '/projects/cariance.png',
+    imageTreatment: 'cover',
+    logoPlate: 'icon',
   },
 ]
 
