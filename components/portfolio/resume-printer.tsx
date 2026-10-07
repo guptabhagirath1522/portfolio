@@ -249,7 +249,7 @@ export function ResumePrinter({ onOpenChange }: ResumePrinterProps) {
           onClick={print}
           disabled={open}
           aria-label={open ? 'Resume printed' : 'Print resume'}
-          className="relative z-[2] inline-flex h-full items-center justify-center overflow-hidden rounded-full border border-black/15 px-6 text-sm font-semibold transition-colors will-change-transform backface-hidden hover:border-[#8cae18] disabled:cursor-default"
+          className="relative z-[2] inline-flex h-full items-center justify-center overflow-hidden rounded-full border border-black/15 px-6 text-sm font-semibold transition-[colors,transform] will-change-transform backface-hidden hover:border-[#8cae18] hover:-translate-y-1 disabled:cursor-default"
         >
           <span
             ref={skinRef}

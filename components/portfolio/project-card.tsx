@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Open ${project.title}`}
-      className="project-card group w-full shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] transition-transform hover:-translate-y-2 lg:w-[calc(50%-10px)]"
+      className="project-card group w-full shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] transition-transform hover:-translate-y-2 lg:w-[min(540px,42vw)]"
     >
       <div
         className={`relative flex h-56 items-end justify-between overflow-hidden p-6 ${project.accent}`}

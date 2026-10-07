@@ -37,15 +37,15 @@ export function Hero() {
               tabIndex={resumeOpen ? -1 : undefined}
               className={`${collapsibleClassName} ${hiddenClassName} bg-[#152019] text-white hover:-translate-y-1`}
             >
-              View projects <MoveUpRight size={16} />
+              View projects
             </a>
             <a
               href="mailto:i.guptabhagirath@gmail.com"
               aria-hidden={resumeOpen}
               tabIndex={resumeOpen ? -1 : undefined}
-              className={`${collapsibleClassName} ${hiddenClassName} border border-black/15 hover:border-[#8cae18]`}
+              className={`${collapsibleClassName} ${hiddenClassName} border border-black/15 hover:border-[#8cae18] hover:-translate-y-1`}
             >
-              Contact me <ArrowUpRight size={16} />
+              Contact me
             </a>
             <ResumePrinter onOpenChange={setResumeOpen} />
           </div>

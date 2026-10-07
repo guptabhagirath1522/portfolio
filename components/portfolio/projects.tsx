@@ -2,21 +2,29 @@
 
 import { type TouchEvent, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
 import { projects } from '@/lib/portfolio-data'
 import { ProjectCard } from './project-card'
 import { SectionLabel } from './section-label'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export function Projects() {
   const [projectIndex, setProjectIndex] = useState(0)
   const [visibleCount, setVisibleCount] = useState(2)
+  const [isDesktop, setIsDesktop] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
   const projectTrackRef = useRef<HTMLDivElement>(null)
   const touchStart = useRef<{ x: number; y: number } | null>(null)
   const maxProjectIndex = projects.length - visibleCount
 
   useEffect(() => {
     const desktop = window.matchMedia('(min-width: 1024px)')
-    const update = () => setVisibleCount(desktop.matches ? 2 : 1)
+    const update = () => {
+      setVisibleCount(desktop.matches ? 2 : 1)
+      setIsDesktop(desktop.matches)
+    }
     update()
     desktop.addEventListener('change', update)
     return () => desktop.removeEventListener('change', update)
@@ -26,7 +34,38 @@ export function Projects() {
     setProjectIndex((index) => Math.min(index, projects.length - visibleCount))
   }, [visibleCount])
 
+  // Horizontal scroll
   useLayoutEffect(() => {
+    if (!isDesktop) return
+    const track = projectTrackRef.current
+    const section = sectionRef.current
+    if (!track || !section) return
+
+    const getScrollAmount = () => {
+      return -(track.scrollWidth - track.parentElement!.clientWidth)
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.to(track, {
+        x: getScrollAmount,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${Math.abs(getScrollAmount())}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+        },
+      })
+    }, section)
+
+    return () => ctx.revert()
+  }, [isDesktop])
+
+  useLayoutEffect(() => {
+    if (isDesktop) return
     const track = projectTrackRef.current
     if (!track) return
     const offset = () => {
@@ -46,10 +85,21 @@ export function Projects() {
       tween.kill()
       window.removeEventListener('resize', onResize)
     }
-  }, [projectIndex, visibleCount])
+  }, [projectIndex, visibleCount, isDesktop])
 
   const goToProject = (next: number) =>
     setProjectIndex(Math.max(0, Math.min(next, maxProjectIndex)))
+
+  const scrollByCard = (direction: 1 | -1) => {
+    const st = ScrollTrigger.getAll().find(
+      (t) => t.vars.trigger === sectionRef.current
+    )
+    if (!st) return
+    const step = (st.end - st.start) / (projects.length - 1)
+    const target = window.scrollY + step * direction
+    const clamped = Math.max(st.start, Math.min(st.end, target))
+    window.scrollTo({ top: clamped, behavior: 'smooth' })
+  }
 
   const onProjectTouchStart = (event: TouchEvent) => {
     const touch = event.touches[0]
@@ -67,8 +117,14 @@ export function Projects() {
   }
 
   return (
-    <section id="projects" data-reveal className="bg-[#152019] text-white">
+    <section
+      id="projects"
+      data-reveal
+      ref={sectionRef}
+      className="bg-[#152019] text-white"
+    >
       <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+        {/* Header row */}
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
             <SectionLabel>Selected work</SectionLabel>
@@ -78,12 +134,53 @@ export function Projects() {
               <span className="text-muted-foreground">I&apos;ve shipped.</span>
             </h2>
           </div>
-          <p className="max-w-xs leading-relaxed text-white/55">
-            A small selection of products where engineering, clarity, and craft meet.
-          </p>
+          <div className="flex flex-col items-start gap-5 md:items-end">
+            <p className="max-w-xs leading-relaxed text-white/55 md:text-right">
+              A small selection of products where engineering, clarity, and craft meet.
+            </p>
+            {/* Navigation buttons — below the subtitle */}
+            <div className="flex gap-2">
+              {/* Mobile: icon-only circle buttons */}
+              <button
+                disabled={projectIndex === 0}
+                onClick={() => goToProject(projectIndex - 1)}
+                className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition-colors hover:border-white/30 disabled:cursor-not-allowed disabled:opacity-30 lg:hidden"
+                aria-label="Previous projects"
+              >
+                <ArrowLeft size={16} />
+              </button>
+              <button
+                disabled={projectIndex >= maxProjectIndex}
+                onClick={() => goToProject(projectIndex + 1)}
+                className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition-colors hover:border-white/30 disabled:cursor-not-allowed disabled:opacity-30 lg:hidden"
+                aria-label="Next projects"
+              >
+                <ArrowRight size={16} />
+              </button>
+              {/* Desktop: text buttons that scroll the pinned section */}
+              <button
+                onClick={() => scrollByCard(-1)}
+                className="hidden items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-sm transition-colors hover:border-white/30 hover:bg-white/5 lg:inline-flex"
+                aria-label="Previous project"
+              >
+                <ArrowLeft size={14} />
+                Previous
+              </button>
+              <button
+                onClick={() => scrollByCard(1)}
+                className="hidden items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-sm transition-colors hover:border-white/30 hover:bg-white/5 lg:inline-flex"
+                aria-label="Next project"
+              >
+                Next
+                <ArrowUpRight size={14} />
+              </button>
+            </div>
+          </div>
         </div>
+
+        {/* Project cards track */}
         <div
-          className="mt-14 overflow-hidden pt-2"
+          className="mt-14 overflow-hidden pt-2 lg:overflow-visible"
           onTouchStart={onProjectTouchStart}
           onTouchEnd={onProjectTouchEnd}
         >
@@ -93,45 +190,13 @@ export function Projects() {
             ))}
           </div>
         </div>
-        <div className="mt-10 flex items-center justify-between border-t border-white/10 pt-6">
+
+        {/* Mobile counter */}
+        <div className="mt-10 flex items-center justify-between border-t border-white/10 pt-6 lg:hidden">
           <p className="text-sm text-white/50">
             0{projectIndex + 1}
             {visibleCount > 1 && `–0${projectIndex + visibleCount}`} / 0{projects.length}
           </p>
-          <div className="flex gap-2">
-            <button
-              disabled={projectIndex === 0}
-              onClick={() => goToProject(projectIndex - 1)}
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/15 disabled:cursor-not-allowed disabled:opacity-30 lg:hidden"
-              aria-label="Previous projects"
-            >
-              <ArrowLeft size={16} />
-            </button>
-            <button
-              disabled={projectIndex >= maxProjectIndex}
-              onClick={() => goToProject(projectIndex + 1)}
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/15 disabled:cursor-not-allowed disabled:opacity-30 lg:hidden"
-              aria-label="Next projects"
-            >
-              <ArrowRight size={16} />
-            </button>
-            <button
-              disabled={projectIndex === 0}
-              onClick={() => goToProject(projectIndex - 1)}
-              className="hidden rounded-full border border-white/15 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-30 lg:inline-flex"
-              aria-label="Previous projects"
-            >
-              Previous
-            </button>
-            <button
-              disabled={projectIndex >= maxProjectIndex}
-              onClick={() => goToProject(projectIndex + 1)}
-              className="hidden rounded-full border border-white/15 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-30 lg:inline-flex"
-              aria-label="Next projects"
-            >
-              Next <ArrowUpRight size={14} className="ml-1 inline" />
-            </button>
-          </div>
         </div>
       </div>
     </section>
